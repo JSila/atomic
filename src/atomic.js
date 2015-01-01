@@ -30,7 +30,7 @@
     var XHR = root.XMLHttpRequest || ActiveXObject;
     var request = new XHR('MSXML2.XMLHTTP.3.0');
     request.open(type, url, true);
-    request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    request.setRequestHeader('Content-type', 'application/json');
     request.onreadystatechange = function () {
       if (request.readyState === 4) {
         if (request.status >= 200 && request.status < 300) {
@@ -40,7 +40,7 @@
         }
       }
     };
-    request.send(data);
+    request.send(JSON.stringify(data));
     var callbacks = {
       success: function (callback) {
         methods.success = callback;
